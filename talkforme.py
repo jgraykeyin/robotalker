@@ -5,6 +5,9 @@ import pyttsx3
 
 # Initialize the Text-to-speech module
 engine = pyttsx3.init()
+# Select the voice 
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0].id)
 
 # Number code for devices
 # 1: GOOGLE HOME 
@@ -23,7 +26,7 @@ def mainMenu():
                 "[0] - Quit"]
     return command_list
 
-
+# Each supported device will need to have a menu button here
 def selectDevice():
     while True:
         user_device = input("[G]oogle Home or [A]mazon Echo: ")
@@ -36,9 +39,9 @@ def selectDevice():
 
     return(smart_device)
 
+# Trigger the Text-To-Speech command
 def speakCommand(command,device):
     if device == 1:
-        #command = "Ok Google,"+command
         engine.say("OK Google,"+command)
     elif device == 2:
         engine.say("Hey Alexa,"+command)
@@ -87,7 +90,4 @@ while True:
         speakCommand(user_command,device)
 
 
-    
-        
-
-
+print("Thanks for using Robotalker!")
