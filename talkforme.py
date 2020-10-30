@@ -13,17 +13,18 @@ smart_device = 1
 
 # Main menu of commands
 def mainMenu():
-    print("Commands:")
-    print("[1] - Play music")
-    print("[2] - Set alarm")
-    print("[3] - Check weather")
-    print("[4] - Check time")
-    print("[5] - Watch TV or Movie")
-    print("[6] - User Command")
-    print("[0] - Quit")
+    command_list = ["Commands:", 
+                "[1] - Play Music",
+                "[2] - Set Alarm",
+                "[3] - Check Weather",
+                "[4] - Check Time",
+                "[5] - Watch TV or Movie",
+                "[6] - User Command",
+                "[0] - Quit"]
+    return command_list
+
 
 def selectDevice():
-    print("Please select your Smart Device: ")
     while True:
         user_device = input("[G]oogle Home or [A]mazon Echo: ")
         if user_device.upper() == "G":
@@ -32,8 +33,6 @@ def selectDevice():
         elif user_device.upper() == "A":
             smart_device = 2
             break
-        else:
-            print("Please select G or A")
 
     return(smart_device)
 
@@ -45,13 +44,16 @@ def speakCommand(command,device):
         engine.say("Hey Alexa,"+command)
     engine.runAndWait()
 
-print("Robotalker 0.1")
 # Initial prompt to select which device the user has
+print("Robotalker 0.1")
+print("Please select your Smart Device: ")
 device = selectDevice()
 while True:
 
     # Display the main command menu
-    mainMenu()
+    main_menu = mainMenu()
+    for item in main_menu:
+        print(item)
 
     while True:
         try:
