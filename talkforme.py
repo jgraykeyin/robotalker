@@ -19,6 +19,7 @@ def mainMenu():
     print("[3] - Check weather")
     print("[4] - Check time")
     print("[5] - Watch TV or Movie")
+    print("[6] - User Command")
     print("[0] - Quit")
 
 def selectDevice():
@@ -54,7 +55,7 @@ while True:
 
     while True:
         try:
-            user_command = int(input("#: "))
+            user_command = int(input("> "))
         except:
             print("Please input a number")
         else:
@@ -67,8 +68,24 @@ while True:
     elif user_command == 2:
         print("Example> 'Tomorrow at 6 am'")
         user_alarm = input("Set alarm for: ")
-        user_alarm = "Set alarm for " + user_alarm
+        user_alarm = "set alarm for " + user_alarm
         speakCommand(user_alarm,device)
+    elif user_command == 3:
+        speakCommand("what's the weather today?",device)
+    elif user_command == 4:
+        speakCommand("what time is it?", device)
+    elif user_command == 5:
+        print = "What would you like to watch?"
+        user_watch = input("> ")
+        user_watch = "play " + user_watch
+        speakCommand(user_watch,device)
+    elif user_command == 6:
+        print("What would you like to say to your device?")
+        user_command = input("> ")
+        speakCommand(user_command,device)
+
+
+    
         
 
 
