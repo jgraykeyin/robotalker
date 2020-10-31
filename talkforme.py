@@ -1,6 +1,8 @@
 # Robotalker 0.1 by Justin Gray
-# Program for making your computer speak to your smart device
+# Program for making your computer speak to your smart device.
+# Built around the pyttsx3 module: https://pypi.org/project/pyttsx3/
 # Currently supported devices: Google Home & Amazon Echo
+
 import pyttsx3
 
 # Initialize the Text-to-speech module
@@ -67,24 +69,31 @@ while True:
             break
 
     if user_command == 0:
+        # Quit the program
         break
     elif user_command == 1:
+        # Play Music
         speakCommand("play music",device)
     elif user_command == 2:
+        # Set an alarm
         print("Example> 'Tomorrow at 6 am'")
         user_alarm = input("Set alarm for: ")
         user_alarm = "set alarm for " + user_alarm
         speakCommand(user_alarm,device)
     elif user_command == 3:
+        # Check the weather
         speakCommand("what's the weather today?",device)
     elif user_command == 4:
+        # Check the time
         speakCommand("what time is it?", device)
     elif user_command == 5:
+        # Play a show or movie
         print = "What would you like to watch?"
         user_watch = input("> ")
         user_watch = "play " + user_watch
         speakCommand(user_watch,device)
     elif user_command == 6:
+        # Custom command entered by the user
         print("What would you like to say to your device?")
         user_command = input("> ")
         speakCommand(user_command,device)
