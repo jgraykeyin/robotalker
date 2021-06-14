@@ -1,7 +1,7 @@
-# Robotalker 0.1 by Justin Gray
+# Robotalker 0.1 by Aahil Ayaz
 # Program for making your computer speak to your smart device.
 # Built around the pyttsx3 module: https://pypi.org/project/pyttsx3/
-# Currently supported devices: Google Home & Amazon Echo
+# Currently supported devices: Clauimax & Baymax
 
 import pyttsx3
 
@@ -12,8 +12,8 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
 
 # Number code for devices
-# 1: GOOGLE HOME 
-# 2: AMAZON ECHO
+# 1: CLAUIMAX
+# 2: BAYMAX
 smart_device = 1
 
 # Main menu of commands
@@ -24,14 +24,20 @@ def mainMenu():
                 "[3] - Check Weather",
                 "[4] - Check Time",
                 "[5] - Watch TV or Movie",
-                "[6] - User Command",
-                "[0] - Quit"]
+                "[6] - Connect To My Phone",
+                "[7] - Scan Location",
+    "[8] - Check For Any Severe Or Minor Injury",
+                    "[9] - Throw Ball", 
+                    "[10] - Check Schedule",
+                    "[11] Check signs for danger",
+                    "[11] Whats My Name?",
+                    
     return command_list
 
 # Each supported device will need to have a menu button here
 def selectDevice():
     while True:
-        user_device = input("[G]oogle Home or [A]mazon Echo: ")
+        user_device = input("[C] Clauimax or [B] Baymax: ")
         if user_device.upper() == "G":
             smart_device = 1
             break
@@ -44,9 +50,9 @@ def selectDevice():
 # Trigger the Text-To-Speech command
 def speakCommand(command,device):
     if device == 1:
-        engine.say("OK Google,"+command)
+        engine.say("Clauimax,"+command)
     elif device == 2:
-        engine.say("Hey Alexa,"+command)
+        engine.say("Baymax,"+command)
     engine.runAndWait()
 
 # Initial prompt to select which device the user has
@@ -94,9 +100,9 @@ while True:
         speakCommand(user_watch,device)
     elif user_command == 6:
         # Custom command entered by the user
-        print("What would you like to say to your device?")
+        print("Connect To My Phone?")
         user_command = input("> ")
-        speakCommand(user_command,device)
+        speakCommand(user_connect,device)
 
 
 print("Thanks for using Robotalker!")
